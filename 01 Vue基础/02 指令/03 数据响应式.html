@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name='viewport' content='width: device-width, init-scale=1.0'>
+    <title>数据响应式</title>
+    <script src="../../vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <input type="text" v-model="msg">
+    <p v-once>v-once:   {{msg}}</p>
+    <p>{{msg}}</p>
+</div>
+<script>
+    new Vue({
+        el:"#app",
+        data:{
+            msg:"Hello Vue!"
+        }
+    })
+</script>
+</body>
+</html>

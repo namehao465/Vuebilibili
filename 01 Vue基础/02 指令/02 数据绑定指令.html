@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name='viewport' content='width: device-width, init-scale=1.0'>
+    <title>数据绑定指令</title>
+    <script src="../../vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <h1>01 v-text</h1>
+    <p v-text="msg"></p>
+
+    <h1>02 v-html</h1>
+    <p v-html="msg1"></p>
+
+    <h1>03 v-pre</h1>
+    <p v-pre>{{msg}}</p>
+</div>
+<script>
+    new Vue({
+        el:"#app",
+        data:{
+            msg:"Hello Vue!",
+            msg1:"<span style='color: red'>Hello World!</span>"
+        }
+    })
+</script>
+</body>
+</html>
