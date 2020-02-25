@@ -1,0 +1,14 @@
+li{
+    list-style: none;
+}
+
+::placeholder{
+    color: red;
+}
+
+#box{
+    width: 400px;
+    height: 400px;
+    background-color: pink;
+    background: url("../images/cg033_2.jpg");
+}
