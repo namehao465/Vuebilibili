@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name='viewport' content='width: device-width, init-scale=1.0'>
+    <title>03 嵌套路由</title>
+    <script src="../vue.js"></script>
+    <script src="../vue-router.js"></script>
+</head>
+<body>
+<div id="app">
+    <router-link to="/user">user</router-link>
+    <router-link to="/register">register</router-link>
+
+    <router-view></router-view>
+</div>
+<script>
+    const user = {
+        template: `<div>user组件</div>`
+    };
+    const register = {
+        template: `<div>
+                        <h1>register组件</h1>
+                        <hr/>
+                        <router-link to="/register/tab1">Tab1</router-link>
+                        <router-link to="/register/tab2">Tab2</router-link>
+                        <router-view></router-view>
+                        </div>`
+    };
+    const tab1 = {
+        template: `<div>tab1子组件</div>`
+    };
+    const tab2 = {
+        template: `<div>tab2子组件</div>`
+    };
+    const router = new VueRouter({
+        routes:[
+            {path:'/user',component:user},
+            {path:'/',redirect:'/user'},
+            {
+                path:'/register',
+                component:register,
+                children:[
+                    {path:'/register/tab1',component:tab1},
+                    {path:'/register/tab2',component:tab2}
+                ]}
+        ]
+    });
+    const app = new Vue({
+        el:"#app",
+        router,
+        data:{},
+        methods:{},
+        components:{
+            user,
+            register
+        }
+    })
+</script>
+</body>
+</html>

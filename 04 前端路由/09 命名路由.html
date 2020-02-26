@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name='viewport' content='width: device-width, init-scale=1.0'>
+    <title>05 路由组件传递参数</title>
+    <script src="../vue.js"></script>
+    <script src="../vue-router.js"></script>
+</head>
+<body>
+<div id="app">
+    <router-link to="/user/1">user1</router-link>
+    <router-link to="/user/2">user2</router-link>
+    <router-link to="/user/3">user3</router-link>
+    <router-link to="/userVIP/4821">userVIP</router-link>
+    <router-link to="/message">message</router-link>
+    <router-link to="/register">register</router-link>
+    <router-link :to="{name:'userVIP',params:{id:3}}">register</router-link>
+
+    <router-view></router-view>
+</div>
+<script>
+    const user = {
+        props:['id'],
+        template: `<div>user组件{{id}}</div>`
+    };
+    const userVIP = {
+        props:['name','age','id'],
+        template: `<div>name:{{name}},age:{{age}},id:{{id}}</div>`
+    };
+    const message = {
+        props:['name','age'],
+        template: `<div>name:{{name}},age:{{age}}</div>`
+    };
+    const register = {
+        template: `<div>
+                        <h1>register组件</h1>
+                        <hr/>
+                        <router-link to="/register/tab1">Tab1</router-link>
+                        <router-link to="/register/tab2">Tab2</router-link>
+                        <router-view></router-view>
+                        </div>`
+    };
+    const tab1 = {
+        template: `<div>tab1子组件</div>`
+    };
+    const tab2 = {
+        template: `<div>tab2子组件</div>`
+    };
+    const router = new VueRouter({
+        routes:[
+            //pros参数为布尔值
+            {path:'/user/:id',component:user,props:true},
+            //pros参数为对象
+            {
+                path:'/message',
+                component:message,
+                props:
+                    {
+                        name:"chenhao",
+                        age:28
+                    }
+            },
+            //pros参数为函数
+            {
+                path:'/userVIP/:id',
+                component:userVIP,
+                //命名路由
+                name:"userVIP",
+                props:route=>({
+                    name:"chenhao",
+                    age:28,
+                    id:route.params.id
+                })
+            },
+            {path:'/',redirect:'/register'},
+            {
+                path:'/register',
+                component:register,
+                children:[
+                    {path:'/register/tab1',component:tab1},
+                    {path:'/register/tab2',component:tab2}
+                ]}
+        ]
+    });
+    const app = new Vue({
+        el:"#app",
+        router,
+        data:{},
+        methods:{},
+        components:{
+            user,
+            register
+        }
+    })
+</script>
+</body>
+</html>

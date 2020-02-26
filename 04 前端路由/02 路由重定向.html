@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name='viewport' content='width: device-width, init-scale=1.0'>
+    <title>02 路由重定向</title>
+    <script src="../vue.js"></script>
+    <script src="../vue-router.js"></script>
+</head>
+<body>
+<div id="app">
+    <router-link to="/user">user</router-link>
+    <router-link to="/register">register</router-link>
+
+    <router-view></router-view>
+</div>
+<script>
+    const user = {
+        template: `<div>user组件</div>`
+    };
+    const register = {
+        template: `<div>register组件</div>`
+    };
+    const router = new VueRouter({
+        routes:[
+            {path:'/user',component:user},
+            {path:'/',redirect:'/user'},
+            {path:'/register',component:register}
+        ]
+    });
+    const app = new Vue({
+        el:"#app",
+        router,
+        data:{},
+        methods:{},
+        components:{
+            user,
+            register
+        }
+    })
+</script>
+</body>
+</html>
