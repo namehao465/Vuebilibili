@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name='viewport' content='width: device-width, init-scale=1.0'>
+    <title>03 post传参</title>
+    <script src="axios.js"></script>
+</head>
+<body>
+<script>
+    axios.post('http://127.0.0.1:3000/axios',{
+        name:"chenhao",
+        age:28
+    }).then(function (ret) {
+        console.log(ret.data)
+    })
+
+    let params = new URLSearchParams();
+    params.append('name','wufang')
+    params.append('age',28)
+
+    axios.post('http://127.0.0.1:3000/axios',params).then(function (ret) {
+        console.log(ret.data)
+    })
+</script>
+</body>
+</html>

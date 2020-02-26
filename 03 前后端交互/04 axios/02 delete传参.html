@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name='viewport' content='width: device-width, init-scale=1.0'>
+    <title>02 delete传参</title>
+    <script src="axios.js"></script>
+</head>
+<body>
+<script>
+    //url传参
+    axios.delete('http://127.0.0.1:3000/axios?id=4821').then(function (ret) {
+        console.log(ret.data)
+    })
+    //Restful传参
+    axios.delete('http://127.0.0.1:3000/axios/4821').then(function (ret) {
+        console.log(ret.data)
+    })
+    //url传参
+    axios.delete('http://127.0.0.1:3000/axios',{
+        params:{
+            id:789
+        }
+    }).then(function (ret) {
+        console.log(ret.data)
+    })
+</script>
+</body>
+</html>

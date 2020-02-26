@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name='viewport' content='width: device-width, init-scale=1.0'>
+    <title>05 axios响应</title>
+    <script src="axios.js"></script>
+</head>
+<body>
+<script>
+    //超时时间
+    axios.defaults.timeout = 3000;
+    //默认地址
+    axios.defaults.baseURL = 'http://localhost:3000/';
+    //设置请求头 服务端需要设置允许发送请求头
+    //res.header('Access-Control-Allow-Headers','mytoken')
+    axios.defaults.headers['mytoken'] = 'lalalallala';
+    axios.get('admin').then(function (ret) {
+        console.log(ret)
+    })
+
+    axios.get('axios-json').then(function (ret) {
+        console.log(ret.data.name)
+    })
+</script>
+</body>
+</html>

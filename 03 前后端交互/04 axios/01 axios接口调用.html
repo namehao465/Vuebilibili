@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name='viewport' content='width: device-width, init-scale=1.0'>
+    <title>01 axios接口调用</title>
+    <script src="axios.js"></script>
+</head>
+<body>
+<script>
+    axios.get('http://127.0.0.1:3000/admin').then(function (ret) {
+        console.log(ret.data)
+    })
+    //url传参
+    axios.get('http://127.0.0.1:3000/axios?id=4821').then(function (ret) {
+        console.log(ret.data)
+    })
+    //Restful传参
+    axios.get('http://127.0.0.1:3000/axios/4821').then(function (ret) {
+        console.log(ret.data)
+    })
+    //url传参
+    axios.get('http://127.0.0.1:3000/axios',{
+        params:{
+            id:789
+        }
+    }).then(function (ret) {
+        console.log(ret.data)
+    })
+</script>
+</body>
+</html>
