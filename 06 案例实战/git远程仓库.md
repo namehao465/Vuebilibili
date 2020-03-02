@@ -36,15 +36,15 @@
   git push -u origin master
   ```
 ### git命令
-```shell
-//查看git状态
-git status
-//创建分支
-git checkout -b 分支名
-//查看分支
-git branch
-//更新待提交的文件
-git add .
-//提交文件
-git commit -m "add file"
-```
+| 功能                             | 代码                        |
+| -------------------------------- | --------------------------- |
+| 查看git本地状态                  | `git status`                |
+| 创建本地分支                     | `git checkout -b 分支名`    |
+| 查看本地分支                     | `git branch`                |
+| 更新本地待提交的文件             | `git add .`                 |
+| 提交本地文件                     | `git commit -m "add file"`  |
+| 切换分支                         | `git brach 分支名`          |
+| 将分支代码更新到现在所处的分支   | `git merge 分支名`          |
+| 推送代码至远程仓库               | `git push`                  |
+| 推送代码至远程仓库并创建对应分支 | `git push -u origin 分支名` |
+

@@ -42,11 +42,18 @@
       * 在登陆页面输入用户名和密码
       * 调用后台接口进行验证
       * 通过验证后，根据后台的响应状态跳转到项目主页
+      
    2. 登录业务相关技术点
       * http是无状态
       * 通过cookie在客户端记录状态（无跨域问题）
       * 通过session在服务器端记录状态（无跨域问题）
       * 通过token方式维持状态（有跨域问题）
+      
+   3. ESlint检查
+   
+      1. [webstorm配置Prettier](https://blog.csdn.net/ttxxsir/article/details/82802171)
+      2. `npm run lint`修复代码
+   
 4. 语法处理
 5. 主页
 6. 用户列表
